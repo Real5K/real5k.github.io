@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saumya Kathuria - GitHub Portfolio</title>
+    <title>Saumya Kathuria - Portfolio</title>
     <style>
         :root {
             --primary-color: #0366d6;
             --secondary-color: #24292e;
             --bg-color: #f6f8fa;
             --text-color: #24292e;
+            --accent-color: #f9826c;
             --border-color: #e1e4e8;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            line-height: 1.5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             color: var(--text-color);
             margin: 0;
             padding: 0;
@@ -23,15 +24,16 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
         header {
+            text-align: center;
             background-color: var(--secondary-color);
             color: white;
-            padding: 20px 0;
-            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 5px solid var(--accent-color);
         }
-        .avatar {
+        header img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -44,35 +46,35 @@
         }
         .bio {
             font-size: 1.2em;
-            max-width: 600px;
-            margin: 10px auto;
+            max-width: 800px;
+            margin: 20px auto;
         }
         .tabs {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-            border-bottom: 1px solid var(--border-color);
+            margin-top: 30px;
+            border-bottom: 2px solid var(--border-color);
         }
         .tab {
-            padding: 10px 20px;
+            padding: 15px 25px;
             cursor: pointer;
-            border: none;
             background: none;
-            font-size: 1em;
+            border: none;
+            font-size: 1.2em;
             color: #ffffff80;
-            transition: color 0.3s;
+            transition: color 0.3s, border-bottom 0.3s;
         }
         .tab.active {
             color: white;
-            border-bottom: 2px solid white;
+            border-bottom: 3px solid white;
         }
         .tab-content {
             display: none;
-            padding: 20px;
+            padding: 40px 20px;
             background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         .tab-content.active {
             display: block;
@@ -86,30 +88,42 @@
             text-align: center;
         }
         .stat-value {
-            font-size: 2em;
+            font-size: 2.5em;
             font-weight: bold;
             color: var(--primary-color);
         }
         .projects, .skills, .experience {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
         .project, .skill, .job {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .project:hover, .skill:hover, .job:hover {
+            transform: translateY(-5px);
         }
         .skill-bar {
-            height: 10px;
+            height: 15px;
             background-color: #e1e4e8;
-            border-radius: 5px;
+            border-radius: 7px;
             overflow: hidden;
+            margin-top: 10px;
         }
         .skill-progress {
             height: 100%;
             background-color: var(--primary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: 50px;
         }
         a {
             color: var(--primary-color);
@@ -122,18 +136,20 @@
 </head>
 <body>
     <header>
-        <img src="/api/placeholder/150/150" alt="Your Avatar" class="avatar">
+        <img src="your-avatar.jpg" alt="Saumya Kathuria Avatar" class="avatar">
         <h1>Saumya Kathuria</h1>
-        <p class="bio">Passionate about advancing NLP, Generative AI, and Reinforcement Learning, with a focus on AI applications in education, content creation, and dialogue systems.</p>
+        <p class="bio">I'm a passionate AI researcher focusing on Natural Language Processing, Generative AI, and Reinforcement Learning. I have experience in developing innovative solutions for real-world applications, including speech recognition, content generation, and personalized learning systems.</p>
+    </header>
+
+    <div class="container">
         <div class="tabs">
             <button class="tab active" data-tab="overview">Overview</button>
             <button class="tab" data-tab="projects">Projects</button>
             <button class="tab" data-tab="skills">Skills</button>
             <button class="tab" data-tab="experience">Experience</button>
         </div>
-    </header>
 
-    <div class="container">
+        <!-- Overview Section -->
         <div id="overview" class="tab-content active">
             <div class="stats">
                 <div class="stat">
@@ -150,61 +166,69 @@
                 </div>
             </div>
             <h2>About Me</h2>
-            <p>Hello! I’m a Computer Science student at BITS Pilani with a strong focus on NLP and Generative AI. I have experience working with advanced AI tools and algorithms, such as WhisperX, NeMo, and Wav2Vec2, and I’m passionate about applying AI to solve real-world problems, including language processing and education.</p>
+            <p>I am currently pursuing my Bachelor's in Computer Science at BITS Pilani. My research interests are deeply rooted in advancing NLP and Generative AI, with a focus on enhancing machine-human communication and creating AI systems capable of personalized learning. I am particularly passionate about how AI can transform automated content generation and interactive environments.</p>
             <h2>Latest Activity</h2>
             <ul>
+                <li>Developed ASR and Speaker Diarization Integration</li>
                 <li>Contributed to Digital India Bhashini project</li>
-                <li>Developed an AI-powered task manager</li>
-                <li>Worked on speaker diarization and transcription integration</li>
+                <li>Created heuristic graph-optimization algorithm for course assignment</li>
             </ul>
         </div>
 
+        <!-- Projects Section -->
         <div id="projects" class="tab-content">
             <h2>Featured Projects</h2>
             <div class="projects">
                 <div class="project">
                     <h3>Integrating Speaker Diarization with ASR</h3>
-                    <p>Combined WhisperX for transcription and NVIDIA NeMo for diarization to distinguish speakers and generate speaker-aware transcripts.</p>
+                    <p>Combined WhisperX for transcription and NVIDIA NeMo for speaker diarization in multi-speaker environments. Generated speaker-aware transcripts and SRT files.</p>
                     <p><strong>Tech Stack:</strong> WhisperX, NeMo, Demucs, Wav2Vec2</p>
-                    <a href="#">View Project</a>
                 </div>
                 <div class="project">
                     <h3>TheFootballManager</h3>
-                    <p>A command-line interface for managing football teams, implementing player statistics, real-time edits, and match simulations.</p>
-                    <p><strong>Tech Stack:</strong> Python, JSON, Object-Oriented Programming</p>
-                    <a href="#">View Project</a>
+                    <p>Interactive CLI football manager that allows for real-time team management, match simulation, and data persistence through JSON.</p>
+                    <p><strong>Tech Stack:</strong> Python, JSON, OOP</p>
                 </div>
                 <div class="project">
                     <h3>Assignment is All You Need</h3>
-                    <p>Heuristic graph-optimization algorithm for assigning faculty to courses, using advanced strategies like constraint propagation.</p>
+                    <p>Heuristic graph-optimization algorithm to assign faculty to courses based on preferences and constraints, improving efficiency through search space pruning.</p>
                     <p><strong>Tech Stack:</strong> Python, Graph Theory, Heuristics</p>
-                    <a href="#">View Project</a>
                 </div>
             </div>
         </div>
 
+        <!-- Skills Section -->
         <div id="skills" class="tab-content">
             <h2>Technical Skills</h2>
             <div class="skills">
                 <div class="skill">
                     <h3>Python</h3>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
                 </div>
                 <div class="skill">
                     <h3>JavaScript</h3>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
                 </div>
                 <div class="skill">
-                    <h3>NLP Tools</h3>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                    <h3>NLP Tools (HuggingFace, NeMo)</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
                 </div>
                 <div class="skill">
                     <h3>Machine Learning (TensorFlow, PyTorch)</h3>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Experience Section -->
         <div id="experience" class="tab-content">
             <h2>Work Experience</h2>
             <div class="experience">
@@ -228,6 +252,10 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Saumya Kathuria. All Rights Reserved.</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
