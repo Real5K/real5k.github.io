@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saumya Kathuria - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --secondary-color: #24292e;
+            --bg-color: #f6f8fa;
+            --text-color: #24292e;
+            --accent-color: #f9826c;
+            --border-color: #e1e4e8;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 20px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .bio {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #ffffff80;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        .tab.active {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+        .tab-content {
+            display: none;
+            padding: 40px 20px;
+            background-color: white;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .projects, .skills, .experience {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .project, .skill, .job {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .project:hover, .skill:hover, .job:hover {
+            transform: translateY(-5px);
+        }
+        .skill-bar {
+            height: 15px;
+            background-color: #e1e4e8;
+            border-radius: 7px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: 50px;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="your-avatar.jpg" alt="Saumya Kathuria Avatar" class="avatar">
+        <h1>Saumya Kathuria</h1>
+        <p class="bio">I'm a passionate AI researcher focusing on Natural Language Processing, Generative AI, and Reinforcement Learning. I have experience in developing innovative solutions for real-world applications, including speech recognition, content generation, and personalized learning systems.</p>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">Overview</button>
+            <button class="tab" data-tab="projects">Projects</button>
+            <button class="tab" data-tab="skills">Skills</button>
+            <button class="tab" data-tab="experience">Experience</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="tab-content active">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">42</div>
+                    <div>Repositories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1337</div>
+                    <div>Contributions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">99</div>
+                    <div>Followers</div>
+                </div>
+            </div>
+            <h2>About Me</h2>
+            <p>I am currently pursuing my Bachelor's in Computer Science at BITS Pilani. My research interests are deeply rooted in advancing NLP and Generative AI, with a focus on enhancing machine-human communication and creating AI systems capable of personalized learning. I am particularly passionate about how AI can transform automated content generation and interactive environments.</p>
+            <h2>Latest Activity</h2>
+            <ul>
+                <li>Developed ASR and Speaker Diarization Integration</li>
+                <li>Contributed to Digital India Bhashini project</li>
+                <li>Created heuristic graph-optimization algorithm for course assignment</li>
+            </ul>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="tab-content">
+            <h2>Featured Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Integrating Speaker Diarization with ASR</h3>
+                    <p>Combined WhisperX for transcription and NVIDIA NeMo for speaker diarization in multi-speaker environments. Generated speaker-aware transcripts and SRT files.</p>
+                    <p><strong>Tech Stack:</strong> WhisperX, NeMo, Demucs, Wav2Vec2</p>
+                </div>
+                <div class="project">
+                    <h3>TheFootballManager</h3>
+                    <p>Interactive CLI football manager that allows for real-time team management, match simulation, and data persistence through JSON.</p>
+                    <p><strong>Tech Stack:</strong> Python, JSON, OOP</p>
+                </div>
+                <div class="project">
+                    <h3>Assignment is All You Need</h3>
+                    <p>Heuristic graph-optimization algorithm to assign faculty to courses based on preferences and constraints, improving efficiency through search space pruning.</p>
+                    <p><strong>Tech Stack:</strong> Python, Graph Theory, Heuristics</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="tab-content">
+            <h2>Technical Skills</h2>
+            <div class="skills">
+                <div class="skill">
+                    <h3>Python</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>NLP Tools (HuggingFace, NeMo)</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>Machine Learning (TensorFlow, PyTorch)</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="tab-content">
+            <h2>Work Experience</h2>
+            <div class="experience">
+                <div class="job">
+                    <h3>Research Intern</h3>
+                    <p><strong>Digital India Bhashini Division</strong> | May 2024 - July 2024</p>
+                    <ul>
+                        <li>Worked on language technologies for Indian languages, focusing on Inverse Text Normalization.</li>
+                        <li>Developed WFST models for linguistic tasks and BERT-based indic-punct model.</li>
+                        <li>Researched state-of-the-art translation and diarization tools.</li>
+                    </ul>
+                </div>
+                <div class="job">
+                    <h3>Independent Project</h3>
+                    <p><strong>Integrating ASR with Speaker Diarization</strong> | June 2024 - Present</p>
+                    <ul>
+                        <li>Integrated WhisperX and NVIDIA NeMo for multi-speaker transcription and diarization.</li>
+                        <li>Enhanced transcription with punctuation-based speaker attribution and timestamp alignment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Saumya Kathuria. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
