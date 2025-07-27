@@ -5,20 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>nDNA – Neural DNA Framework</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: "SF Pro Display", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #f8f9fa, #ffffff);
-      color: #111;
+      background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+      color: #1a1a1a;
       display: flex;
+      line-height: 1.6;
     }
 
     /* LEFT COLUMN (logo + vertical nav) */
     .left-column {
-      width: 200px;
-      background-color: #ffffff;
-      border-right: 1px solid #ddd;
+      width: 240px;
+      background: #ffffff;
+      border-right: 1px solid #e5e5e5;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,70 +32,91 @@
       bottom: 0;
       left: 0;
       z-index: 1000;
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.02);
     }
 
     .logo-container {
       width: 100%;
-      padding: 16px;
-      border-bottom: 1px solid #eee;
+      padding: 32px 20px 24px 20px;
+      border-bottom: 1px solid #f0f0f0;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .logo-container img {
-      width: 120px;
+      width: 100px;
       height: auto;
       object-fit: contain;
+      filter: grayscale(1) brightness(0.2);
     }
 
     .side-menu {
-      margin-top: 20px;
+      margin-top: 32px;
       display: flex;
       flex-direction: column;
       align-items: stretch;
       width: 100%;
+      gap: 4px;
     }
 
     .side-tab {
-      padding: 14px 20px;
-      text-align: center;
+      padding: 16px 24px;
+      text-align: left;
       cursor: pointer;
       font-weight: 500;
+      font-size: 0.95em;
       text-decoration: none;
-      color: #333;
-      border-radius: 8px;
-      margin: 6px 10px;
-      transition: background 0.2s ease;
+      color: #666;
+      border-radius: 12px;
+      margin: 0 16px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      letter-spacing: 0.01em;
     }
 
     .side-tab:hover {
-      background-color: #e6f0ff;
+      background-color: #f8f8f8;
+      color: #333;
+      transform: translateX(2px);
     }
 
     .side-tab.active {
-      background-color: #d0e7ff;
-      font-weight: bold;
-      color: #000;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .side-tab.active::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 24px;
+      background: #1a1a1a;
+      border-radius: 0 2px 2px 0;
     }
 
     /* RIGHT CONTENT */
     .page-wrapper {
-      margin-left: 200px;
-      width: calc(100% - 200px);
+      margin-left: 240px;
+      width: calc(100% - 240px);
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     .navbar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
-      padding: 14px 24px 14px 24px;
-      background-color: #ffffff;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      gap: 8px;
+      padding: 20px 32px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #f0f0f0;
       position: sticky;
       top: 0;
       z-index: 900;
@@ -98,65 +124,105 @@
 
     .navbar a {
       text-decoration: none;
-      color: #333;
-      background-color: #f5f5f5;
-      padding: 8px 14px;
-      border-radius: 20px;
+      color: #555;
+      background: linear-gradient(145deg, #f8f8f8, #f0f0f0);
+      padding: 12px 20px;
+      border-radius: 16px 16px 4px 16px;
       font-weight: 500;
-      font-size: 0.95em;
-      transition: all 0.2s ease-in-out;
-      box-shadow: inset 0 0 0 transparent;
+      font-size: 0.9em;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #e5e5e5;
+      letter-spacing: 0.01em;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .navbar a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.8));
+      border-radius: 16px 16px 4px 16px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .navbar a:hover::before {
+      opacity: 1;
     }
 
     .navbar a:hover {
-      background-color: #e0e0e0;
-      color: #000;
-      box-shadow: inset 0 0 0 1px #ccc;
+      background: linear-gradient(145deg, #e8e8e8, #ddd);
+      color: #1a1a1a;
+      border-color: #ccc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .navbar a.active {
-      background-color: #d63384;
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(214, 51, 132, 0.3);
+      background: linear-gradient(145deg, #1a1a1a, #333);
+      color: #ffffff;
+      font-weight: 600;
+      border-color: #1a1a1a;
+      box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .navbar a.active::before {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent);
+      opacity: 1;
     }
 
     .navbar .submenu {
       display: none;
       flex-basis: 100%;
-      justify-content: center;
-      padding: 10px 0 0 0;
-      gap: 8px;
-      animation: fadeIn 0.3s ease-in;
+      justify-content: flex-start;
+      padding: 16px 0 0 0;
+      gap: 6px;
+      animation: slideDown 0.3s ease-out;
       flex-wrap: wrap;
     }
 
     .navbar .submenu a {
-      background-color: #f0f0f0;
-      color: #444;
-      font-size: 0.9em;
-      padding: 6px 10px;
-      border-radius: 16px;
-      transition: all 0.2s ease;
+      background: linear-gradient(145deg, #f5f5f5, #ebebeb);
+      color: #666;
+      font-size: 0.85em;
+      padding: 8px 14px;
+      border-radius: 12px 12px 3px 12px;
+      font-weight: 500;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
     }
 
     .navbar .submenu a:hover {
-      background-color: #dfe6f1;
-      color: #111;
+      background: linear-gradient(145deg, #e0e0e0, #d5d5d5);
+      color: #1a1a1a;
+      border-color: #ccc;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    @keyframes slideDown {
+      from { 
+        opacity: 0; 
+        transform: translateY(-10px);
+      }
+      to   { 
+        opacity: 1; 
+        transform: translateY(0);
+      }
     }
 
     /* Content */
     .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 32px;
       display: flex;
-      gap: 40px;
+      gap: 60px;
+      flex: 1;
     }
 
     .main-text {
@@ -164,51 +230,149 @@
     }
 
     .main-text h1 {
-      font-size: 2.6em;
-      margin-bottom: 10px;
+      font-size: 3.5em;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .main-text h2 {
-      margin-top: 40px;
-      font-size: 1.4em;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #2a2a2a;
+      letter-spacing: -0.01em;
     }
 
     .main-text p {
       font-size: 1.1em;
-      line-height: 1.75em;
-      margin-bottom: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .main-text strong {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .main-text em {
+      color: #666;
+      font-style: italic;
     }
 
     .image-card {
       flex: 1;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+      border: 1px solid #f0f0f0;
       text-align: center;
       align-self: flex-start;
+      transition: all 0.3s ease;
+    }
+
+    .image-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     }
 
     .image-card img {
-      width: 80%;
-      max-width: 200px;
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(0.3);
+      margin-bottom: 16px;
+    }
+
+    .image-card p {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.3em;
+      color: #1a1a1a;
+      letter-spacing: -0.01em;
     }
 
     .highlight-box {
-      border-left: 4px solid #d63384;
-      padding-left: 15px;
-      background: #fef6fa;
-      border-radius: 4px;
-      font-size: 1em;
-      padding: 12px;
-      margin-top: 20px;
+      border-left: 4px solid #1a1a1a;
+      padding: 24px;
+      background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+      border-radius: 12px;
+      margin: 32px 0;
+      border: 1px solid #f0f0f0;
+      position: relative;
+    }
+
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #1a1a1a 0%, transparent 100%);
+    }
+
+    .highlight-box strong {
+      color: #1a1a1a;
+      font-weight: 600;
+      font-size: 1.05em;
     }
 
     footer {
-      margin: 60px 0 20px 0;
+      margin-top: auto;
+      padding: 40px 32px;
       text-align: center;
       font-size: 0.9em;
       color: #999;
+      border-top: 1px solid #f0f0f0;
+      background: #fafafa;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .left-column {
+        width: 200px;
+      }
+      
+      .page-wrapper {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+      }
+      
+      .container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+      }
+      
+      .main-text h1 {
+        font-size: 2.5em;
+      }
+      
+      .navbar {
+        padding: 16px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .left-column {
+        width: 180px;
+      }
+      
+      .page-wrapper {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+      }
+      
+      .side-tab {
+        padding: 12px 16px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
@@ -217,7 +381,7 @@
   <!-- LEFT COLUMN: Logo + Tabs -->
   <div class="left-column">
     <div class="logo-container">
-      <img src="ndna_logo_v5.png" alt="nDNA Logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DNA_icon.svg/512px-DNA_icon.svg.png" alt="nDNA Logo">
     </div>
     <div class="side-menu" id="leftTabs">
       <div class="side-tab active" onclick="switchView('LLM')">LLM</div>
@@ -242,7 +406,7 @@
         <h1>nDNA</h1>
         <h2>Introduction to nDNA</h2>
         <p><strong>nDNA</strong>—short for <em>Neural DNA</em>—is a novel framework for analyzing the latent cognitive structure of large AI models. Just as biological DNA governs inheritance in living systems, nDNA models the <em>semantic genome</em> of foundation models—mapping how they internalize, evolve, and transmit abstract patterns of thought, reasoning, and belief.</p>
-        <p>Rather than focusing solely on surface-level performance, nDNA dives into the internal epistemic geometry of models—revealing how they reason, adapt, and align with external values over time. It functions as a diagnostic fingerprint of a model’s evolving “mind.”</p>
+        <p>Rather than focusing solely on surface-level performance, nDNA dives into the internal epistemic geometry of models—revealing how they reason, adapt, and align with external values over time. It functions as a diagnostic fingerprint of a model's evolving "mind."</p>
 
         <h2>The Core Triad of nDNA</h2>
         <p>nDNA integrates three foundational signals to form a latent cognitive fingerprint of a model. Each component captures a distinct dimension of semantic dynamics:</p>
@@ -251,25 +415,25 @@
         <p><strong>Definition:</strong> Spectral measure of latent manifold bending and flexibility</p>
 
         <div class="highlight-box">
-          <strong>Interpretation:</strong> Quantifies how sharply internal representational trajectories bend, serving as a scalar measure of latent acceleration. High curvature indicates regions where the model’s internal geometry undergoes rapid structural changes.
+          <strong>Interpretation:</strong> Quantifies how sharply internal representational trajectories bend, serving as a scalar measure of latent acceleration. High curvature indicates regions where the model's internal geometry undergoes rapid structural changes.
         </div>
       </div>
 
       <div class="image-card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DNA_icon.svg/512px-DNA_icon.svg.png" alt="nDNA Diagram"/>
-        <p style="margin-top: 10px; font-weight: bold; font-size: 1.2em;">nDNA</p>
+        <p>nDNA</p>
       </div>
     </div>
 
     <footer>
-      © Copyright 2025 nDNA. Hosted with ❤️.
+      © Copyright 2025 nDNA Framework. Built with precision.
     </footer>
   </div>
 
   <!-- JS Logic -->
   <script>
     const fullMenu = [
-      "nDNA", "Fine-Tuning", "Cultural nDNA", "Multilinguality", 
+      "nDNA", "15 LLMs", "Fine-Tuning", "Cultural nDNA", "Multilinguality", 
       "Alignment", "Quantization", "Quantization", 
       "Pruning", "Model Merging", "Model Collapse",
       "Knowledge Distillation", "Neural Genomics", 
