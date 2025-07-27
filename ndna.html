@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>nDNA – Neural DNA Framework</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f8f9fa, #ffffff);
+      color: #111;
+      display: flex;
+    }
+
+    /* LEFT COLUMN (logo + vertical nav) */
+    .left-column {
+      width: 200px;
+      background-color: #ffffff;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      width: 100%;
+      padding: 16px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container img {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .side-menu {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .side-tab {
+      padding: 14px 20px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      color: #333;
+      border-radius: 8px;
+      margin: 6px 10px;
+      transition: background 0.2s ease;
+    }
+
+    .side-tab:hover {
+      background-color: #e6f0ff;
+    }
+
+    .side-tab.active {
+      background-color: #d0e7ff;
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* RIGHT CONTENT */
+    .page-wrapper {
+      margin-left: 200px;
+      width: calc(100% - 200px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px 14px 24px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.95em;
+      transition: all 0.2s ease-in-out;
+      box-shadow: inset 0 0 0 transparent;
+    }
+
+    .navbar a:hover {
+      background-color: #e0e0e0;
+      color: #000;
+      box-shadow: inset 0 0 0 1px #ccc;
+    }
+
+    .navbar a.active {
+      background-color: #d63384;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(214, 51, 132, 0.3);
+    }
+
+    .navbar .submenu {
+      display: none;
+      flex-basis: 100%;
+      justify-content: center;
+      padding: 10px 0 0 0;
+      gap: 8px;
+      animation: fadeIn 0.3s ease-in;
+      flex-wrap: wrap;
+    }
+
+    .navbar .submenu a {
+      background-color: #f0f0f0;
+      color: #444;
+      font-size: 0.9em;
+      padding: 6px 10px;
+      border-radius: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .navbar .submenu a:hover {
+      background-color: #dfe6f1;
+      color: #111;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Content */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .main-text {
+      flex: 2;
+    }
+
+    .main-text h1 {
+      font-size: 2.6em;
+      margin-bottom: 10px;
+    }
+
+    .main-text h2 {
+      margin-top: 40px;
+      font-size: 1.4em;
+    }
+
+    .main-text p {
+      font-size: 1.1em;
+      line-height: 1.75em;
+      margin-bottom: 16px;
+    }
+
+    .image-card {
+      flex: 1;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      align-self: flex-start;
+    }
+
+    .image-card img {
+      width: 80%;
+      max-width: 200px;
+    }
+
+    .highlight-box {
+      border-left: 4px solid #d63384;
+      padding-left: 15px;
+      background: #fef6fa;
+      border-radius: 4px;
+      font-size: 1em;
+      padding: 12px;
+      margin-top: 20px;
+    }
+
+    footer {
+      margin: 60px 0 20px 0;
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT COLUMN: Logo + Tabs -->
+  <div class="left-column">
+    <div class="logo-container">
+      <img src="ndna_logo_v5.png" alt="nDNA Logo">
+    </div>
+    <div class="side-menu" id="leftTabs">
+      <div class="side-tab active" onclick="switchView('LLM')">LLM</div>
+      <div class="side-tab" onclick="switchView('MFM')">MFM</div>
+      <div class="side-tab" onclick="switchView('T2I')">T2I</div>
+      <div class="side-tab" onclick="switchView('Diffusion')">Diffusion LM</div>
+      <div class="side-tab" onclick="switchView('EFM')">EFM</div>
+    </div>
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="page-wrapper">
+    
+    <!-- TOP MENU -->
+    <div class="navbar">
+      <div id="topMenu" style="display: flex; flex-wrap: wrap; align-items: center;"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="main-text">
+        <h1>nDNA</h1>
+        <h2>Introduction to nDNA</h2>
+        <p><strong>nDNA</strong>—short for <em>Neural DNA</em>—is a novel framework for analyzing the latent cognitive structure of large AI models. Just as biological DNA governs inheritance in living systems, nDNA models the <em>semantic genome</em> of foundation models—mapping how they internalize, evolve, and transmit abstract patterns of thought, reasoning, and belief.</p>
+        <p>Rather than focusing solely on surface-level performance, nDNA dives into the internal epistemic geometry of models—revealing how they reason, adapt, and align with external values over time. It functions as a diagnostic fingerprint of a model’s evolving “mind.”</p>
+
+        <h2>The Core Triad of nDNA</h2>
+        <p>nDNA integrates three foundational signals to form a latent cognitive fingerprint of a model. Each component captures a distinct dimension of semantic dynamics:</p>
+
+        <p><strong>1. Spectral Curvature <em>κ<sub>ℓ</sub></em></strong></p>
+        <p><strong>Definition:</strong> Spectral measure of latent manifold bending and flexibility</p>
+
+        <div class="highlight-box">
+          <strong>Interpretation:</strong> Quantifies how sharply internal representational trajectories bend, serving as a scalar measure of latent acceleration. High curvature indicates regions where the model’s internal geometry undergoes rapid structural changes.
+        </div>
+      </div>
+
+      <div class="image-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DNA_icon.svg/512px-DNA_icon.svg.png" alt="nDNA Diagram"/>
+        <p style="margin-top: 10px; font-weight: bold; font-size: 1.2em;">nDNA</p>
+      </div>
+    </div>
+
+    <footer>
+      © Copyright 2025 nDNA. Hosted with ❤️.
+    </footer>
+  </div>
+
+  <!-- JS Logic -->
+  <script>
+    const fullMenu = [
+      "nDNA", "Fine-Tuning", "Cultural nDNA", "Multilinguality", 
+      "Alignment", "Quantization", "Quantization", 
+      "Pruning", "Model Merging", "Model Collapse",
+      "Knowledge Distillation", "Neural Genomics", 
+      "Risk: Latent Manipulation", "at-a-glance", "FAQ"
+    ];
+
+    const neuralSubmenuItems = ["nHD", "nGDI", "nTDS", "nKaryotyping", "nDIV", "nEPI", "nCCL"];
+    const minimalMenu = ["nDNA"];
+
+    function renderTopMenu(items) {
+      const container = document.getElementById('topMenu');
+      container.innerHTML = '';
+
+      items.forEach((item, idx) => {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.className = idx === 0 ? 'active' : '';
+        link.innerText = item;
+
+        if (item === "Neural Genomics") {
+          link.onclick = function (e) {
+            e.preventDefault();
+            const submenu = document.getElementById("neuralGenomicsSubmenu");
+            submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+          };
+        }
+
+        container.appendChild(link);
+
+        if (item === "Neural Genomics") {
+          const submenu = document.createElement('div');
+          submenu.className = "submenu";
+          submenu.id = "neuralGenomicsSubmenu";
+
+          neuralSubmenuItems.forEach(sub => {
+            const subLink = document.createElement('a');
+            subLink.href = "#";
+            subLink.innerText = sub;
+            submenu.appendChild(subLink);
+          });
+
+          container.appendChild(submenu);
+        }
+      });
+    }
+
+    function switchView(view) {
+      document.querySelectorAll('.side-tab').forEach(el => el.classList.remove('active'));
+      const tab = [...document.querySelectorAll('.side-tab')].find(el => el.innerText === view || el.innerText.includes(view));
+      if (tab) tab.classList.add('active');
+      renderTopMenu(view === "LLM" ? fullMenu : minimalMenu);
+    }
+
+    switchView("LLM");
+  </script>
+</body>
+</html>
