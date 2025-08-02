@@ -1,3 +1,12 @@
+Of course. I've adjusted the layout to your specifications.
+
+The vertical experience bar has been moved to the right side of the page to better frame the content, and the AI pipeline diagram in the hero section is now wider, taking up more space and shifting its boundary to the left as you requested.
+
+### \#\# Updated Portfolio Code
+
+Here is the complete HTML with the updated CSS. You can replace the content of your `index.html` file with this code.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,7 +216,7 @@
 
         .experience-bar {
             position: fixed;
-            left: 2rem;
+            right: 2rem; /* Changed from left to right */
             top: 50%;
             transform: translateY(-50%);
             z-index: 40;
@@ -292,7 +301,8 @@
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr minmax(320px, 450px);
+            /* Adjusted grid to make pipeline diagram wider */
+            grid-template-columns: 1fr minmax(500px, 1.2fr); 
             gap: 4rem;
             align-items: center;
         }
@@ -1365,3 +1375,4 @@
     </script>
 </body>
 </html>
+```
