@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saumya Kathuria | Machine Learning Research Portfolio</title>
-    <meta name="description" content="Portfolio of Saumya Kathuria, Machine Learning Researcher specializing in Computer Vision, Neural Networks, and AI Ethics">
+    <title>Saumya Kathuria | Undergraduate Machine Learning Researcher</title>
+    <meta name="description" content="Portfolio of Saumya Kathuria, an undergraduate researcher in Machine Learning, focusing on Computer Vision, Neural Networks, and AI Ethics.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -195,6 +195,10 @@
             background: hsl(var(--accent));
             color: hsl(var(--accent-foreground));
         }
+        
+        .theme-toggle svg {
+            stroke: hsl(var(--foreground));
+        }
 
         .main-content {
             flex: 1;
@@ -288,7 +292,7 @@
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr minmax(320px, 450px);
             gap: 4rem;
             align-items: center;
         }
@@ -394,6 +398,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 10px 50px -12px hsl(var(--foreground) / 0.25);
+            min-width: 0;
         }
 
         .dashboard-header {
@@ -402,7 +407,7 @@
             background: var(--glass-bg);
             display: flex;
             align-items: center;
-            justify-content: between;
+            justify-content: space-between;
         }
 
         .dashboard-title {
@@ -477,7 +482,7 @@
         .kanban-header {
             display: flex;
             align-items: center;
-            justify-content: between;
+            justify-content: space-between;
             margin-bottom: 1.5rem;
         }
 
@@ -504,6 +509,11 @@
             transition: background 0.2s ease;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            color: hsl(var(--foreground));
+        }
+        
+        .icon-btn svg {
+            stroke: currentColor;
         }
 
         .icon-btn:hover {
@@ -512,7 +522,7 @@
 
         .kanban-board {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             height: 350px;
         }
@@ -529,7 +539,7 @@
         .column-header {
             display: flex;
             align-items: center;
-            justify-content: between;
+            justify-content: space-between;
             margin-bottom: 1rem;
         }
 
@@ -757,18 +767,18 @@
             position: relative;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            color: hsl(var(--foreground));
+        }
+        
+        .social-link svg {
+            fill: currentColor;
+            stroke: currentColor;
         }
 
         .social-link:hover {
             background: hsl(var(--accent));
             transform: translateY(-2px);
             box-shadow: 0 8px 25px hsl(var(--foreground) / 0.1);
-        }
-
-        .social-link svg {
-            color: #000000 !important;
-            fill: #000000 !important;
-            stroke: #000000 !important;
         }
 
         .footer {
@@ -788,10 +798,6 @@
         }
 
         @media (max-width: 1024px) {
-            .experience-bar {
-                display: none;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -812,6 +818,10 @@
         }
 
         @media (max-width: 768px) {
+             .experience-bar {
+                display: none;
+            }
+            
             .nav-menu {
                 display: none;
             }
@@ -849,7 +859,6 @@
 </head>
 <body data-theme="dark">
     <div class="app-layout">
-        <!-- Experience Bar -->
         <div class="experience-bar">
             <div class="experience-items">
                 <div class="experience-item">
@@ -859,22 +868,17 @@
                 </div>
                 <div class="experience-item">
                     <div class="experience-dot"></div>
+                    <div class="experience-year">2024</div>
+                    <div class="experience-line"></div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
                     <div class="experience-year">2023</div>
                     <div class="experience-line"></div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-dot"></div>
-                    <div class="experience-year">2021</div>
-                    <div class="experience-line"></div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-dot"></div>
-                    <div class="experience-year">2019</div>
-                    <div class="experience-line"></div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-dot"></div>
-                    <div class="experience-year">2017</div>
+                    <div class="experience-year">2022</div>
                 </div>
             </div>
         </div>
@@ -895,7 +899,7 @@
                     </ul>
                 </nav>
                 <button class="theme-toggle" onclick="toggleTheme()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
                     </svg>
@@ -911,16 +915,16 @@
                         <div class="hero-text">
                             <div class="hero-badge">
                                 <div class="dot"></div>
-                                <span>Currently researching AI interpretability</span>
+                                <span>Aspiring AI Researcher & Developer</span>
                             </div>
-                            <h1 class="hero-title">Machine learning for <span style="color: hsl(var(--muted-foreground));">human</span> understanding</h1>
-                            <p class="hero-subtitle">Advancing the frontiers of artificial intelligence through innovative research in computer vision, neural networks, and interpretable AI systems. Building the future of human-AI collaboration.</p>
+                            <h1 class="hero-title">Building intelligent systems for a <span style="color: hsl(var(--muted-foreground));">better</span> future</h1>
+                            <p class="hero-subtitle">An undergraduate researcher passionate about computer vision, neural networks, and developing human-centered AI. Eager to contribute to impactful projects and advance the frontiers of machine learning.</p>
                             <div class="cta-buttons">
                                 <a href="#research" class="btn btn-primary">View Research</a>
                                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                             </div>
                             <div class="hero-stats">
-                                50+ publications • 3000+ citations • 10+ years experience
+                                3+ Projects • Conference Poster @ WiML 2024 • 2+ years of learning
                             </div>
                         </div>
                         <div class="dashboard-preview cosmic-glow">
@@ -965,13 +969,13 @@
                                         <div class="kanban-title">Research Projects</div>
                                         <div class="kanban-actions">
                                             <button class="icon-btn">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2">
                                                     <line x1="12" y1="5" x2="12" y2="19"></line>
                                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 </svg>
                                             </button>
                                             <button class="icon-btn">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2">
                                                     <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
                                                     <circle cx="6" cy="12" r="3"></circle>
                                                 </svg>
@@ -985,63 +989,45 @@
                                                 <div class="column-count">3</div>
                                             </div>
                                             <div class="kanban-card">
-                                                <div class="card-title">Interpretable CNN Architecture</div>
+                                                <div class="card-title">Interpretable CNN Study</div>
                                                 <div class="card-meta">
                                                     <span>Medical Imaging</span>
-                                                    <span>•</span>
-                                                    <span>High Priority</span>
                                                 </div>
                                             </div>
                                             <div class="kanban-card">
-                                                <div class="card-title">Federated Learning Framework</div>
+                                                <div class="card-title">Federated Learning Sim</div>
                                                 <div class="card-meta">
                                                     <span>Privacy Research</span>
-                                                    <span>•</span>
-                                                    <span>Medium Priority</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="kanban-column">
                                             <div class="column-header">
-                                                <div class="column-title">Under Review</div>
+                                                <div class="column-title">Completed</div>
                                                 <div class="column-count">2</div>
                                             </div>
                                             <div class="kanban-card">
-                                                <div class="card-title">Adversarial Robustness Study</div>
+                                                <div class="card-title">Bias Detection Project</div>
                                                 <div class="card-meta">
-                                                    <span>CVPR 2024</span>
-                                                    <span>•</span>
-                                                    <span>Submitted</span>
+                                                    <span>WiML 2024</span>
                                                 </div>
                                             </div>
                                             <div class="kanban-card">
-                                                <div class="card-title">Neural Architecture Search</div>
+                                                <div class="card-title">ViT vs CNN Analysis</div>
                                                 <div class="card-meta">
-                                                    <span>ICML 2024</span>
-                                                    <span>•</span>
-                                                    <span>In Review</span>
+                                                    <span>UGR Journal</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="kanban-column">
                                             <div class="column-header">
-                                                <div class="column-title">Published</div>
+                                                <div class="column-title">Future Ideas</div>
                                                 <div class="column-count">5</div>
                                             </div>
                                             <div class="kanban-card">
-                                                <div class="card-title">Deep Learning for Diagnosis</div>
+                                                <div class="card-title">Adversarial Attacks</div>
                                                 <div class="card-meta">
-                                                    <span>Nature MI</span>
-                                                    <span>•</span>
-                                                    <span>Published</span>
-                                                </div>
-                                            </div>
-                                            <div class="kanban-card">
-                                                <div class="card-title">Explainable AI Methods</div>
-                                                <div class="card-meta">
-                                                    <span>NeurIPS 2023</span>
-                                                    <span>•</span>
-                                                    <span>Accepted</span>
+                                                    <span>Course Project</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1055,7 +1041,7 @@
 
             <section id="research" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Research Areas</h2>
+                    <h2 class="section-title">Research Interests</h2>
                     <p class="section-subtitle">Exploring the intersection of machine learning, human cognition, and ethical AI development</p>
                 </div>
                 <div class="grid grid-3">
@@ -1075,7 +1061,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Computer Vision</h3>
                         </div>
-                        <p class="card-description">Advanced image recognition and analysis systems, including work on medical imaging, autonomous vehicle perception, and real-time object detection algorithms with focus on robustness and efficiency.</p>
+                        <p class="card-description">Exploring advanced image recognition and analysis systems, including work on medical imaging, autonomous vehicle perception, and real-time object detection algorithms with focus on robustness and efficiency.</p>
                         <div class="tags">
                             <span class="tag">CNN</span>
                             <span class="tag">Object Detection</span>
@@ -1087,7 +1073,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Neural Architecture Search</h3>
                         </div>
-                        <p class="card-description">Automated design of neural network architectures using evolutionary algorithms and reinforcement learning to optimize both performance and efficiency for specific tasks and constraints.</p>
+                        <p class="card-description">Investigating the automated design of neural network architectures to optimize both performance and efficiency for specific tasks, as part of my academic coursework and personal projects.</p>
                         <div class="tags">
                             <span class="tag">AutoML</span>
                             <span class="tag">NAS</span>
@@ -1099,7 +1085,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Federated Learning</h3>
                         </div>
-                        <p class="card-description">Privacy-preserving machine learning techniques that enable training on distributed data without compromising sensitive information, with applications in healthcare and finance.</p>
+                        <p class="card-description">Learning about privacy-preserving machine learning techniques that enable training on distributed data without compromising sensitive information, with applications in healthcare and finance.</p>
                         <div class="tags">
                             <span class="tag">Privacy</span>
                             <span class="tag">Distributed ML</span>
@@ -1147,7 +1133,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Medical AI Diagnostic Platform</h3>
                         </div>
-                        <p class="card-description">A comprehensive AI system for medical image analysis that assists radiologists in detecting early-stage diseases. Features interpretable deep learning models with 94% accuracy and real-time inference capabilities.</p>
+                        <p class="card-description">A project exploring an AI system for medical image analysis that assists radiologists in detecting early-stage diseases. Built using deep learning models to explore interpretability techniques.</p>
                         <div class="tags">
                             <span class="tag">TensorFlow</span>
                             <span class="tag">Computer Vision</span>
@@ -1167,7 +1153,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Self-Driving Car Perception System</h3>
                         </div>
-                        <p class="card-description">Real-time object detection and tracking system for autonomous vehicles using advanced neural architectures. Optimized for edge deployment with sub-100ms inference time and 99.2% object detection accuracy.</p>
+                        <p class="card-description">A real-time object detection and tracking system for simulated autonomous driving environments. Explores real-time neural architectures and their optimization for edge deployment.</p>
                         <div class="tags">
                             <span class="tag">PyTorch</span>
                             <span class="tag">YOLO</span>
@@ -1187,7 +1173,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Federated Learning Framework</h3>
                         </div>
-                        <p class="card-description">Open-source framework for privacy-preserving machine learning across distributed networks. Implements differential privacy and secure aggregation protocols for sensitive data applications.</p>
+                        <p class="card-description">An open-source framework for exploring privacy-preserving machine learning. Implements core concepts of differential privacy and secure aggregation for sensitive data applications.</p>
                         <div class="tags">
                             <span class="tag">Federated Learning</span>
                             <span class="tag">Privacy</span>
@@ -1207,7 +1193,7 @@
                         <div class="card-header">
                             <h3 class="card-title">AutoML Neural Architecture Search</h3>
                         </div>
-                        <p class="card-description">Automated neural architecture search platform that discovers optimal network designs for specific tasks. Reduces model development time by 80% while achieving state-of-the-art performance on multiple benchmarks.</p>
+                        <p class="card-description">A platform that automates neural architecture search to discover efficient network designs for specific tasks. A project aimed at reducing model development time and exploring novel architectures.</p>
                         <div class="tags">
                             <span class="tag">AutoML</span>
                             <span class="tag">Neural Architecture</span>
@@ -1225,39 +1211,19 @@
 
             <section id="publications" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Recent Publications</h2>
-                    <p class="section-subtitle">Selected peer-reviewed research contributions to the field of machine learning</p>
+                    <h2 class="section-title">Recent Publications & Presentations</h2>
+                    <p class="section-subtitle">Selected research contributions and academic presentations</p>
                 </div>
                 <div class="publications-list">
                     <div class="publication">
-                        <div class="publication-title">Interpretable Deep Learning for Medical Diagnosis: A Comprehensive Framework</div>
-                        <div class="publication-venue">Nature Machine Intelligence, 2024</div>
-                        <div class="publication-authors">S. Kathuria, M. Rodriguez, K. Zhang, A. Patel, et al.</div>
-                    </div>
-                    <div class="publication">
-                        <div class="publication-title">Efficient Neural Architecture Search for Real-Time Applications</div>
-                        <div class="publication-venue">International Conference on Machine Learning (ICML), 2024</div>
-                        <div class="publication-authors">S. Kathuria, L. Wang, A. Patel</div>
-                    </div>
-                    <div class="publication">
-                        <div class="publication-title">Adversarial Robustness in Computer Vision: New Perspectives and Methods</div>
-                        <div class="publication-venue">Conference on Computer Vision and Pattern Recognition (CVPR), 2023</div>
-                        <div class="publication-authors">S. Kathuria, D. Kim, R. Johnson, T. Liu, et al.</div>
-                    </div>
-                    <div class="publication">
-                        <div class="publication-title">Federated Learning with Differential Privacy: Theory and Practice</div>
-                        <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS), 2023</div>
-                        <div class="publication-authors">M. Rodriguez, S. Kathuria, T. Liu</div>
-                    </div>
-                    <div class="publication">
-                        <div class="publication-title">Explainable AI for Healthcare: A Multi-Modal Approach</div>
-                        <div class="publication-venue">Journal of Medical Internet Research, 2023</div>
-                        <div class="publication-authors">S. Kathuria, A. Patel, K. Zhang, M. Rodriguez</div>
-                    </div>
-                    <div class="publication">
-                        <div class="publication-title">Bias Detection and Mitigation in Deep Learning Models</div>
-                        <div class="publication-venue">ACM Conference on Fairness, Accountability, and Transparency (FAccT), 2022</div>
+                        <div class="publication-title">Bias Detection in Deep Learning Models for Medical Imaging</div>
+                        <div class="publication-venue">Poster Presentation, Women in Machine Learning (WiML) Workshop, 2024</div>
                         <div class="publication-authors">S. Kathuria, R. Johnson, D. Kim</div>
+                    </div>
+                     <div class="publication">
+                        <div class="publication-title">A Comparative Study of Vision Transformer and CNNs for Object Detection</div>
+                        <div class="publication-venue">Undergraduate Research Journal, University of XYZ, 2023</div>
+                        <div class="publication-authors">S. Kathuria, A. Patel</div>
                     </div>
                 </div>
             </section>
@@ -1269,33 +1235,33 @@
                 </div>
                 <div class="social-links">
                     <a href="mailto:saumya.kathuria@university.edu" class="social-link" title="Email">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                     </a>
                     <a href="https://scholar.google.com" class="social-link" title="Google Scholar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13.5L7.5 12l1.42-1.42L11 12.67l4.08-4.08L16.5 10 11 15.5z"/>
                         </svg>
                     </a>
                     <a href="https://linkedin.com" class="social-link" title="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                     </a>
                     <a href="https://github.com" class="social-link" title="GitHub">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
                     </a>
                     <a href="https://twitter.com" class="social-link" title="Twitter">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
                             <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                         </svg>
                     </a>
                     <a href="https://orcid.org" class="social-link" title="ORCID">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
                             <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.739 3.588-3.722 0-2.016-1.247-3.722-3.588-3.722h-2.297z"/>
                         </svg>
                     </a>
@@ -1326,11 +1292,12 @@
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-menu a');
             
-            let current = '';
+            let current = 'home';
+            const scrollY = window.pageYOffset;
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
+                if (scrollY >= (sectionTop - 100)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1359,7 +1326,7 @@
 
         // Update active nav on scroll
         window.addEventListener('scroll', updateActiveNav);
-        updateActiveNav(); // Initial call
+        window.addEventListener('load', updateActiveNav); // Initial call
 
         // Add scroll animations
         const observerOptions = {
@@ -1372,6 +1339,7 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
